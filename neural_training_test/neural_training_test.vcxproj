@@ -78,7 +78,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\neural_network\neural_network\Back_prop.cpp" />
+    <ClCompile Include="..\..\neural_network\neural_network\Layer.cpp" />
+    <ClCompile Include="..\..\neural_network\neural_network\Neural_Network.cpp" />
+    <ClCompile Include="..\..\neural_network\neural_network\Neuron.cpp" />
     <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\neural_network\neural_network\Back_prop.h" />
+    <ClInclude Include="..\..\neural_network\neural_network\Layer.h" />
+    <ClInclude Include="..\..\neural_network\neural_network\Neural_Network.h" />
+    <ClInclude Include="..\..\neural_network\neural_network\Neuron.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
