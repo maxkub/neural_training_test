@@ -17,8 +17,8 @@ int main()
 	vector<int> scheme = { 1, 5, 1 };
 
 	string path = "F:/Projets-C++/neural_training_test/sinus_training.csv";
-	vector<double> training_inputs;
-	vector<double> training_outputs;
+	vector<vector<double>> training_inputs;
+	vector<vector<double>> training_outputs;
 
 	ifstream file(path.c_str());
 
@@ -26,6 +26,8 @@ int main()
 	{
 		double x, y;
 		string input;
+		vector<double> in, out;
+
 
 		getline(file, input);
 
@@ -35,11 +37,13 @@ int main()
 
 			while (ss >> x)
 			{
-				training_inputs.push_back(x);
+				in = { x };
+				training_inputs.push_back(in);
 
 				ss >> y;
+				out = { y };
 				
-				training_outputs.push_back(y);
+				training_outputs.push_back(out);
 
 				//cout << "x ,y : " << x << " " << y << endl;
 			}
@@ -55,12 +59,14 @@ int main()
 	//test reading
 	for (auto i : training_inputs)
 	{
-		cout << i << endl;
+		cout << i[0] << endl;
 	}
 
 	Network network(scheme, 1);
 
 	network.build_network();
+
+
 
 
 
