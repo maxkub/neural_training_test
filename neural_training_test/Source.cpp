@@ -14,14 +14,14 @@ using namespace std;
 int main()
 {
 
-	vector<int> scheme = { 1, 5, 1 };
+	vector<int> scheme = { 1, 10,5, 1 };
 
 	double lambda = 0.2;
-	double alpha = 0.2;
-	double stop_crit = 1.;
+	double alpha = 0.5;
+	double stop_crit = 0.4;
 
-	string path = "F:/Projets-C++/neural_training_test/sinus_training.csv";
-	string save_path = "F/Projets-C++/neural_training_test/cost_evol.out";
+	string path = "F:/Projets-C++/neural_training_test/sinus2_training.csv";
+	string save_path = "F:/Projets-C++/neural_training_test/cost_evol.out";
 	vector<vector<double>> training_inputs;
 	vector<vector<double>> training_outputs;
 
@@ -41,7 +41,7 @@ int main()
 
 		getline(file, input);
 
-		while (getline(file,input))
+		while (getline(file,input) )
 		{
 			stringstream ss(input);
 
@@ -87,6 +87,47 @@ int main()
 		cout << "cost : " << cost << endl;
 	}
 
+
+
+	//--------------------------------------------
+
+	vector<vector<double>> weights;
+
+	weights = back_prop.get_mod_weights();
+	network.set_allWeights(weights);
+
+	save_path = "F:/Projets-C++/neural_training_test/trained_sin.out";
+	vector<vector<double>> x, y;
+    vector<double> dat;
+	vector<double> o;
+
+
+	for (int i = 0; i < 200; ++i)
+	{
+		dat = { i*10. / 200. };
+		x.push_back(dat);
+
+		network.set_inputs(x.back());
+
+		network.forward_prop();
+		o = network.get_outputs();
+
+		y.push_back(o);
+	}
+
+	ofstream sfile(save_path.c_str());
+
+	if (sfile)
+	{
+		for (size_t i = 0; i < x.size(); ++i)
+		{
+			sfile << x[i][0] << ", " << y[i][0] << endl;
+		}
+	}
+	else
+	{
+		cout << "ERROR can't open file to save \n";
+	}
 
 
 	return 0;
