@@ -16,9 +16,19 @@ int main()
 
 	vector<int> scheme = { 1, 5, 1 };
 
+	double lambda = 0.2;
+	double alpha = 0.2;
+	double stop_crit = 1.;
+
 	string path = "F:/Projets-C++/neural_training_test/sinus_training.csv";
+	string save_path = "F/Projets-C++/neural_training_test/cost_evol.out";
 	vector<vector<double>> training_inputs;
 	vector<vector<double>> training_outputs;
+
+	vector<double> cost_vect;
+
+
+
 
 	ifstream file(path.c_str());
 
@@ -62,12 +72,20 @@ int main()
 		cout << i[0] << endl;
 	}
 
+	// building network
 	Network network(scheme, 1);
-
 	network.build_network();
 
+	// building back prop
+	Back_prop back_prop(network, lambda);
+	back_prop.training(training_inputs, training_outputs, alpha, stop_crit, save_path);
 
+	cost_vect = back_prop.get_cost_vect();
 
+	for (auto cost : cost_vect)
+	{
+		cout << "cost : " << cost << endl;
+	}
 
 
 
