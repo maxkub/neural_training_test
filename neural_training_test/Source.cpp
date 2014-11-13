@@ -14,11 +14,11 @@ using namespace std;
 int main()
 {
 
-	vector<int> scheme = { 1, 20,10, 1 };
+	vector<int> scheme = { 1, 15,15,15,15, 1 };
 
 	double lambda = 0.2;
-	double alpha = 0.6;
-	double stop_crit = 0.4;
+	double alpha = 2.0;
+	double stop_crit = 0.00001;
 
 	string path = "F:/Projets-C++/neural_training_test/sinus2_training.csv";
 	string save_path = "F:/Projets-C++/neural_training_test/cost_evol.out";
@@ -102,9 +102,9 @@ int main()
 	vector<double> o;
 
 
-	for (int i = 0; i < 200; ++i)
+	for (int i = -100; i < 100; ++i)
 	{
-		dat = { i*10. / 200. };
+		dat = { i*40. / 200. };
 		x.push_back(dat);
 
 		network.set_inputs(x.back());
