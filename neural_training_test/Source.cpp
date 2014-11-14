@@ -14,13 +14,13 @@ using namespace std;
 int main()
 {
 
-	vector<int> scheme = { 1, 15,15,15,15, 1 };
+	vector<int> scheme = { 1, 10,5,1 };
 
 	double lambda = 0.2;
 	double alpha = 2.0;
-	double stop_crit = 0.00001;
+	double stop_crit = 0.01;
 
-	string path = "F:/Projets-C++/neural_training_test/sinus2_training.csv";
+	string path = "F:/Projets-C++/neural_training_test/parabole_training.csv";
 	string save_path = "F:/Projets-C++/neural_training_test/cost_evol.out";
 	vector<vector<double>> training_inputs;
 	vector<vector<double>> training_outputs;
@@ -73,8 +73,8 @@ int main()
 	}
 
 	// building network
-	Network network(scheme, 0);
-	network.build_network(111);
+	Network network;
+	network.build_network(scheme,0,111);
 
 	// building back prop
 	Back_prop back_prop(network, lambda);
@@ -96,7 +96,7 @@ int main()
 	weights = back_prop.get_mod_weights();
 	network.set_allWeights(weights);
 
-	save_path = "F:/Projets-C++/neural_training_test/trained_sin.out";
+	save_path = "F:/Projets-C++/neural_training_test/trained_parabole.out";
 	vector<vector<double>> x, y;
     vector<double> dat;
 	vector<double> o;
