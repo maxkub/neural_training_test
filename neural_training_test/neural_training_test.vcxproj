@@ -54,10 +54,13 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>F:\Projets-C++\DynamicLibrary\NeuralNetworkDll;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(LIBPATH)\files_io.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -79,19 +82,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\neural_network\neural_network\Back_prop.cpp" />
-    <ClCompile Include="..\..\neural_network\neural_network\Layer.cpp" />
-    <ClCompile Include="..\..\neural_network\neural_network\Neural_Network.cpp" />
-    <ClCompile Include="..\..\neural_network\neural_network\Neuron.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\neural_network\neural_network\Back_prop.h" />
-    <ClInclude Include="..\..\neural_network\neural_network\Layer.h" />
-    <ClInclude Include="..\..\neural_network\neural_network\Neural_Network.h" />
-    <ClInclude Include="..\..\neural_network\neural_network\Neuron.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DynamicLibrary\NeuralNetworkDll\NeuralNetworkDll.vcxproj">
+      <Project>{51a36221-9e98-41b9-87aa-267d81cc1725}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

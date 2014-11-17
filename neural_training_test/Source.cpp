@@ -1,36 +1,51 @@
 #include "stdafx.h"
-#include "F:/Projets-C++/neural_network/neural_network/Neural_Network.h"
-#include "F:/Projets-C++/neural_network/neural_network/Back_prop.h"
-//#include "F:/Projets-C++/neural_network/neural_network/Neuron.h"
-//#include "F:/Projets-C++/neural_network/neural_network/Layer.h"
+#include "Neural_Network.h"
+#include "Back_Prop.h"
 #include <vector>
 #include <fstream>
 #include <iostream>
 #include <string>
 #include <sstream>
 
+
 using namespace std;
+using namespace NeuralNetwork;
 
 int main()
 {
 
-	vector<int> scheme = { 1, 10,5,1 };
+	vector<int> scheme = { 1, 5,5,1 };
 
-	double lambda = 0.2;
+	double lambda = 0.;
 	double alpha = 2.0;
-	double stop_crit = 0.01;
+	double stop_crit = 0.0001;
 
 	string path = "F:/Projets-C++/neural_training_test/parabole_training.csv";
 	string save_path = "F:/Projets-C++/neural_training_test/cost_evol.out";
-	vector<vector<double>> training_inputs;
-	vector<vector<double>> training_outputs;
+	vector<vector<double>> training_inputs = {};
+	vector<vector<double>> training_outputs = {};
 
 	vector<double> cost_vect;
 
+	vector<vector<double>> read(string,int,bool);
+	vector<vector<double>> data;
 
 
 
-	ifstream file(path.c_str());
+	data = read(path, 1, 1);
+
+	cout << "end reading \n";
+
+	for (size_t i = 0; i < data.size(); ++i)
+	{
+		//cout << "data " <<  data[i][0] << " " << data[i][1] << endl;
+
+		training_inputs.push_back({ data[i][0] });
+		training_outputs.push_back({ data[i][1] });
+	}
+
+
+	/*ifstream file(path.c_str());
 
 	if (file)
 	{
@@ -63,7 +78,7 @@ int main()
 	else
 	{
 		cout << "ERROR in opening file : " << path.c_str() << endl;
-	}
+	}*/
 
 
 	//test reading
@@ -93,8 +108,8 @@ int main()
 
 	vector<vector<double>> weights;
 
-	weights = back_prop.get_mod_weights();
-	network.set_allWeights(weights);
+	//weights = back_prop.get_mod_weights();
+	//network.set_allWeights(weights);
 
 	save_path = "F:/Projets-C++/neural_training_test/trained_parabole.out";
 	vector<vector<double>> x, y;
