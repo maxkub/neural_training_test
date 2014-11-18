@@ -1,6 +1,6 @@
-#include "stdafx.h"
 #include "Neural_Network.h"
 #include "Back_Prop.h"
+#include "FilesIo.h"
 #include <vector>
 #include <fstream>
 #include <iostream>
@@ -10,11 +10,14 @@
 
 using namespace std;
 using namespace NeuralNetwork;
+using namespace FilesIo;
 
 int main()
 {
 
 	vector<int> scheme = { 1, 5,5,1 };
+
+
 
 	double lambda = 0.;
 	double alpha = 2.0;
@@ -26,8 +29,6 @@ int main()
 	vector<vector<double>> training_outputs = {};
 
 	vector<double> cost_vect;
-
-	vector<vector<double>> read(string,int,bool);
 	vector<vector<double>> data;
 
 
@@ -94,6 +95,7 @@ int main()
 	// building back prop
 	Back_prop back_prop(network, lambda);
 	back_prop.training(training_inputs, training_outputs, alpha, stop_crit, save_path);
+
 
 	cost_vect = back_prop.get_cost_vect();
 

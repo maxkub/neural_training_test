@@ -55,12 +55,12 @@
       <SDLCheck>true</SDLCheck>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>F:\Projets-C++\DynamicLibrary\NeuralNetworkDll;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\Projets-C++\FilesIo\FilesIo;F:\Projets-C++\neural_network\neural_network;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(LIBPATH)\files_io.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -85,12 +85,11 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="stdafx.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\DynamicLibrary\NeuralNetworkDll\NeuralNetworkDll.vcxproj">
-      <Project>{51a36221-9e98-41b9-87aa-267d81cc1725}</Project>
+    <ProjectReference Include="..\..\FilesIo\FilesIo\FilesIo.vcxproj">
+      <Project>{8d2e9487-7f0c-497c-bb3a-e27e591ea22b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\neural_network\neural_network\neural_network.vcxproj">
+      <Project>{d8e13c32-28e3-46ee-904f-c43bd1e45e91}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
