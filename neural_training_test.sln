@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NeuralNetworkDll", "..\neur
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FilesIo", "..\FilesIo\FilesIo\FilesIo.vcxproj", "{8D2E9487-7F0C-497C-BB3A-E27E591EA22B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Optimum_search_test", "Optimum_search_test\Optimum_search_test.vcxproj", "{DAA2330F-5E44-4348-8634-24BAC39584E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +29,10 @@ Global
 		{8D2E9487-7F0C-497C-BB3A-E27E591EA22B}.Debug|Win32.Build.0 = Debug|Win32
 		{8D2E9487-7F0C-497C-BB3A-E27E591EA22B}.Release|Win32.ActiveCfg = Release|Win32
 		{8D2E9487-7F0C-497C-BB3A-E27E591EA22B}.Release|Win32.Build.0 = Release|Win32
+		{DAA2330F-5E44-4348-8634-24BAC39584E5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DAA2330F-5E44-4348-8634-24BAC39584E5}.Debug|Win32.Build.0 = Debug|Win32
+		{DAA2330F-5E44-4348-8634-24BAC39584E5}.Release|Win32.ActiveCfg = Release|Win32
+		{DAA2330F-5E44-4348-8634-24BAC39584E5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
