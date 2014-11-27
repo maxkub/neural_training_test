@@ -4,6 +4,7 @@
 #include "Neural_Network.h"
 #include "Optimum_search.h"
 
+
 using namespace std;
 using namespace FilesIo;
 using namespace NeuralNetwork;
@@ -15,22 +16,23 @@ int main()
 	double alpha = 3.0;
 	double stop_crit = 0.0001;
 
-	int N_input = 1;
-	int N_neuron_max = 10;
+	int N_input = 24;
+	int N_neuron_max = 6;
 	int N_layer_max = 5;
 	int N_output = 1;
 
-	string path = "F:/Projets-C++/neural_training_test/sinus2_training.csv";
+	//string path = "F:/Projets-C++/neural_training_test/sinus2_training.csv";
+	string path = "E:/add_data/sample_test.out";
 	string save_path = "F:/Projets-C++/neural_training_test/optimum_search.out";
 	vector<vector<double>> training_inputs = {};
 	vector<vector<double>> training_outputs = {};
 	vector<vector<double>> cv_inputs = {};
 	vector<vector<double>> cv_outputs = {};
 	vector<vector<double>> data;
-
+	vector<double> line;
 
 	// importing datafile
-	data = import(path, 1, 1);
+	data = importD(path, 0, 0);
 
 	cout << "end reading \n";
 
@@ -39,15 +41,36 @@ int main()
 
 		if (i%2 == 0)
 		{
-			cout << "data tr " <<  data[i][0] << " " << data[i][1] << endl;
-			training_inputs.push_back({ data[i][0] });
-			training_outputs.push_back({ data[i][1] });
+			//cout << "data tr " <<  data[i][0] << " " << data[i][1] << endl;
+			//training_inputs.push_back({ data[i][0] });
+			//training_outputs.push_back({ data[i][1] });
+
+			training_outputs.push_back({ data[i][0] });
+
+			line.clear();
+			for (size_t j = 1; j < data[i].size() - 1; ++j)
+			{
+				line.push_back(data[i][j]);
+			}
+
+			training_inputs.push_back(line);
 		}
 		else
 		{
-			cout << "data cv " <<  data[i][0] << " " << data[i][1] << endl;
-			cv_inputs.push_back({ data[i][0] });
-			cv_outputs.push_back({ data[i][1] });
+
+			cv_outputs.push_back({ data[i][0] });
+
+			line.clear();
+			for (size_t j = 1; j < data[i].size() - 1; ++j)
+			{
+				line.push_back(data[i][j]);
+			}
+
+			cv_inputs.push_back(line);
+
+			//cout << "data cv " <<  data[i][0] << " " << data[i][1] << endl;
+			//cv_inputs.push_back({ data[i][0] });
+			//cv_outputs.push_back({ data[i][1] });
 		}
 	}
 

@@ -15,7 +15,7 @@ using namespace FilesIo;
 int main()
 {
 
-	vector<int> scheme = { 1, 10,6,1 };
+	vector<int> scheme = { 24,6,1 };
 
 
 
@@ -23,7 +23,8 @@ int main()
 	double alpha = 3.0;
 	double stop_crit = 0.0001;
 
-	string path = "F:/Projets-C++/neural_training_test/sinus2_training.csv";
+	//string path = "F:/Projets-C++/neural_training_test/sinus2_training.csv";
+	string path = "E:/add_data/sample_test.out";
 	string save_path = "F:/Projets-C++/neural_training_test/cost_evol.out";
 	vector<vector<double>> training_inputs = {};
 	vector<vector<double>> training_outputs = {};
@@ -31,9 +32,11 @@ int main()
 	vector<double> cost_vect;
 	vector<vector<double>> data;
 
+	vector<double> line;
+
 
 	// importing datafile
-	data = import(path, 1, 1);
+	data = importD(path, 1, 0);
 
 	cout << "end reading \n";
 
@@ -41,8 +44,15 @@ int main()
 	{
 		//cout << "data " <<  data[i][0] << " " << data[i][1] << endl;
 
-		training_inputs.push_back({ data[i][0] });
-		training_outputs.push_back({ data[i][1] });
+		training_outputs.push_back({ data[i][0] });
+
+		line.clear();
+		for (size_t j = 1; j < data[i].size()-1; ++j)
+		{
+			line.push_back(data[i][j]);
+		}
+		
+		training_inputs.push_back(line);
 	}
 
 
